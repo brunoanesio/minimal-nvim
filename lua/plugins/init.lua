@@ -5,12 +5,26 @@ now(function()
   add "catppuccin/nvim"
   local opts = require "plugins.catppuccin"
   require("catppuccin").setup(opts)
-end)
-now(function()
   vim.cmd.colorscheme "catppuccin"
 end)
 
 -- Mini stuff
+now(function()
+  require("mini.basics").setup {
+    options = {
+      basic = true,
+      win_borders = "single",
+    },
+    mappings = {
+      basic = true,
+      windows = true,
+    },
+    autocommands = {
+      basic = true,
+      relnum_in_visual_mode = true,
+    },
+  }
+end)
 now(function()
   require("mini.notify").setup()
   vim.notify = require("mini.notify").make_notify()
@@ -19,10 +33,19 @@ now(function()
   require("mini.tabline").setup()
 end)
 now(function()
+  require("mini.sessions").setup {
+    autoread = true,
+    autowrite = true,
+  }
+end)
+now(function()
   require("mini.statusline").setup()
 end)
 later(function()
   require("mini.ai").setup()
+end)
+later(function()
+  require("mini.bracketed").setup()
 end)
 later(function()
   require("mini.comment").setup {
@@ -32,6 +55,12 @@ later(function()
       textobject = "gc",
     },
   }
+end)
+later(function()
+  require("mini.completion").setup()
+end)
+later(function()
+  require("mini.files").setup()
 end)
 later(function()
   local hipatterns = require "mini.hipatterns"
@@ -62,12 +91,19 @@ later(function()
   })
 end)
 later(function()
+  require("mini.operators").setup()
+end)
+later(function()
+  require("mini.pairs").setup()
+end)
+later(function()
   require("mini.pick").setup()
 end)
 later(function()
   require("mini.surround").setup()
 end)
 
+-- Other Useful plugins
 now(function()
   add {
     source = "nvim-treesitter/nvim-treesitter",
