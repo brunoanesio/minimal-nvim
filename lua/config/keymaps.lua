@@ -4,20 +4,13 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+map("n", "<leader>qq", "<CMD>q!<CR>", opts)
+map("n", "<C-s>", "<CMD>mksession!<CR>", opts)
+
 -- buffer mappings
 map("n", "<Tab>", ":bnext<CR>", opts)
 map("n", "<S-Tab>", ":bprevious<CR>", opts)
 map("n", "<leader>x", ":bdelete<CR>", opts)
--- Window Navigation
-map("n", "<C-h>", "<C-w>h", opts)
-map("n", "<C-j>", "<C-w>j", opts)
-map("n", "<C-k>", "<C-w>k", opts)
-map("n", "<C-l>", "<C-w>l", opts)
--- Window resize
-map("n", "<C-Up>", ":resize -2<CR>", opts)
-map("n", "<C-Down>", ":resize +2<CR>", opts)
-map("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-map("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Visual mappings
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
@@ -34,8 +27,10 @@ map("v", "<leader>y", '"+y')
 map("n", "<leader>Y", '"+Y')
 map("n", "<leader>d", '"_d')
 map("v", "<leader>d", '"_d')
--- fast exit on insert
-map("i", "jj", "<ESC>")
-map("i", "jk", "<ESC>")
--- Save witch Ctrl-s
-map("n", "<C-s>", "<CMD>w!<CR>", opts)
+
+-- Plugin Keymaps
+map("n", "<leader>e", "<CMD>lua MiniFiles.open()<CR>", opts)
+map("n", "<leader>qs", "<CMD>lua MiniSessions.read()<CR>", opts)
+map("n", "<leader>ff", "<CMD>Pick files<CR>", opts)
+map("n", "<leader>fg", "<CMD>Pick live_grep<CR>", opts)
+map("n", "<leader>bb", "<CMD>Pick buffers<CR>", opts)
