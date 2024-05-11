@@ -31,7 +31,7 @@ map("v", "<leader>d", '"_d')
 map("n", "<leader>e", "<CMD>lua MiniFiles.open()<CR>", opts)
 map("n", "<leader>qs", "<CMD>lua MiniSessions.read()<CR>", opts)
 map("n", "<leader>ff", "<CMD>Pick files<CR>", opts)
-map("n", "<leader>fg", "<CMD>Pick live_grep<CR>", opts)
+map("n", "<leader>fg", "<CMD>Pick grep_live<CR>", opts)
 map("n", "<leader>bb", "<CMD>Pick buffers<CR>", opts)
 
 -- LSP Keymaps
