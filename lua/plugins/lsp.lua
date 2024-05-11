@@ -4,7 +4,20 @@ now(function()
   add { source = "neovim/nvim-lspconfig", depends = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" } }
 end)
 now(function()
-  add { source = "hrsh7th/nvim-cmp", depends = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip" } }
+  add {
+    source = "hrsh7th/nvim-cmp",
+    depends = { "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path", "saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-buffer" },
+  }
+end)
+now(function()
+  add { source = "L3MON4D3/LuaSnip", depends = { "rafamadriz/friendly-snippets" } }
+  require("luasnip.loaders.from_vscode").lazy_load()
+end)
+now(function()
+  add { source = "Exafunction/codeium.nvim", depends = { "nvim-lua/plenary.nvim" } }
+  require("codeium").setup {
+    enable_chat = true,
+  }
 end)
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -54,6 +67,9 @@ require("mason-lspconfig").setup {
                 vim.env.VIMRUNTIME,
               },
             },
+            format = {
+              enable = false,
+            },
           },
         },
       }
@@ -65,7 +81,11 @@ local cmp = require "cmp"
 
 cmp.setup {
   sources = {
+    { name = "codeium" },
+    { name = "luasnip" },
     { name = "nvim_lsp" },
+    { name = "buffer" },
+    { name = "path" },
   },
   mapping = cmp.mapping.preset.insert {
     ["<CR>"] = cmp.mapping.confirm { select = false },
@@ -76,16 +96,29 @@ cmp.setup {
       require("luasnip").lsp_expand(args.body)
     end,
   },
+  experimental = { ghost_text = true },
+  window = {
+    completion = cmp.config.window.bordered {
+      scrollbar = true,
+      border = "single",
+      col_offset = -1,
+      side_padding = 0,
+    },
+    documentation = cmp.config.window.bordered {
+      scrollbar = true,
+      border = "single",
+    },
+  },
 }
 
-later(function()
+now(function()
   add "stevearc/conform.nvim"
   require("conform").setup {
+    format_on_save = {
+      timeout_ms = 500,
+      lsp_fallback = true,
+    },
     formatters_by_ft = {
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
       lua = { "stylua" },
     },
   }

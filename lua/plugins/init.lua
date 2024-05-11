@@ -36,7 +36,6 @@ now(function()
   require("mini.sessions").setup {
     autoread = false,
     autowrite = true,
-    directory = "session",
   }
 end)
 now(function()
