@@ -23,3 +23,5 @@ require("mini.deps").setup { path = { package = path_package } }
 
 -- Load plugins
 require "plugins"
+-- LSP
+require "plugins.lsp"

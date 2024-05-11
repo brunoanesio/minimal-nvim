@@ -34,8 +34,9 @@ now(function()
 end)
 now(function()
   require("mini.sessions").setup {
-    autoread = true,
+    autoread = false,
     autowrite = true,
+    directory = "session",
   }
 end)
 now(function()
@@ -56,9 +57,9 @@ later(function()
     },
   }
 end)
-later(function()
-  require("mini.completion").setup()
-end)
+-- later(function()
+--   require("mini.completion").setup()
+-- end)
 later(function()
   require("mini.files").setup()
 end)

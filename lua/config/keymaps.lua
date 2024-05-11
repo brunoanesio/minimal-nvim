@@ -4,8 +4,7 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-map("n", "<leader>qq", "<CMD>q!<CR>", opts)
-map("n", "<C-s>", "<CMD>mksession!<CR>", opts)
+map("n", "<leader>qq", "<CMD>mksession!<CR> || <CMD>q!<CR>", opts)
 
 -- buffer mappings
 map("n", "<Tab>", ":bnext<CR>", opts)
@@ -34,3 +33,8 @@ map("n", "<leader>qs", "<CMD>lua MiniSessions.read()<CR>", opts)
 map("n", "<leader>ff", "<CMD>Pick files<CR>", opts)
 map("n", "<leader>fg", "<CMD>Pick live_grep<CR>", opts)
 map("n", "<leader>bb", "<CMD>Pick buffers<CR>", opts)
+
+-- LSP Keymaps
+vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
+vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
+vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
