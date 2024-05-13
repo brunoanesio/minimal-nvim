@@ -2,7 +2,6 @@ return {
   default_integrations = true,
   integrations = {
     cmp = true,
-    gitsigns = true,
     treesitter = true,
     mini = {
       enabled = true,
@@ -10,6 +9,7 @@ return {
     },
     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     telescope = { enabled = true, style = "nvchad" },
+    mason = true,
   },
   custom_highlights = function(colors)
     return {
