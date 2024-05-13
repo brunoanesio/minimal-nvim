@@ -13,7 +13,7 @@ now(function()
   add { source = "L3MON4D3/LuaSnip", depends = { "rafamadriz/friendly-snippets" } }
   require("luasnip.loaders.from_vscode").lazy_load()
 end)
-now(function()
+later(function()
   add { source = "Exafunction/codeium.nvim", depends = { "nvim-lua/plenary.nvim" } }
   require("codeium").setup {
     enable_chat = true,
@@ -46,7 +46,16 @@ local default_setup = function(server)
   }
 end
 
-require("mason").setup {}
+require("mason").setup {
+  ui = {
+    border = "single",
+    icons = {
+      package_installed = "󰄳 ",
+      package_pending = " ",
+      package_uninstalled = " ",
+    },
+  },
+}
 require("mason-lspconfig").setup {
   ensure_installed = {},
   handlers = {
@@ -111,7 +120,7 @@ cmp.setup {
   },
 }
 
-now(function()
+later(function()
   add "stevearc/conform.nvim"
   require("conform").setup {
     format_on_save = {
