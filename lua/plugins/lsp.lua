@@ -148,6 +148,7 @@ later(function()
     },
     formatters_by_ft = {
       lua = { "stylua" },
+      sh = { "shfmt" },
     },
   }
 end)
