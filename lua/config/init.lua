@@ -34,6 +34,7 @@ local options = {
   fillchars = "eob: ",
   undofile = true,
   sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
+  guifont = "JetBrainsMono Nerd Font:h14",
 }
 
 vim.opt.whichwrap:append "<,>,[,],h,l"
