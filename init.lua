@@ -1,3 +1,4 @@
+vim.loader.enable()
 -- Load Neovim configurations before plugins
 require "config"
 require "config.keymaps"
