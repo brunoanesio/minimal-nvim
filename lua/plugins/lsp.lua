@@ -154,6 +154,8 @@ later(function()
       lua = { "stylua" },
       sh = { "shfmt" },
       rust = { "rustfmt" },
+      toml = { "taplo" },
+      json = { "prettierd" },
     },
   }
 end)
