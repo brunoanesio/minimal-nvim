@@ -34,7 +34,6 @@ local options = {
   fillchars = "eob: ",
   undofile = true,
   sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
-  guifont = "JetBrainsMono Nerd Font:h14",
 }
 
 vim.opt.whichwrap:append "<,>,[,],h,l"
@@ -42,3 +41,16 @@ vim.opt.whichwrap:append "<,>,[,],h,l"
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+vim.g.clipboard = {
+  name = "WslClipboard",
+  copy = {
+    ["+"] = "clip.exe",
+    ["*"] = "clip.exe",
+  },
+  paste = {
+    ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  },
+  cache_enabled = 0,
+}
