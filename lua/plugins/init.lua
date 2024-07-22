@@ -57,9 +57,6 @@ later(function()
   }
 end)
 later(function()
-  require("mini.diff").setup()
-end)
-later(function()
   require("mini.files").setup()
 end)
 later(function()
@@ -107,6 +104,13 @@ later(function()
 end)
 
 -- Other Useful plugins
+now(function()
+  add {
+    source = "lewis6991/gitsigns.nvim",
+  }
+  local opts = require "plugins.gitsigns"
+  require("gitsigns").setup(opts)
+end)
 now(function()
   add {
     source = "nvim-treesitter/nvim-treesitter",
